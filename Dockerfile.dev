@@ -1,14 +1,18 @@
 FROM node:16-alpine
- 
 
+# Create app directory and set permissions before switching to 'node' user
+RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
 
-USER node
- 
-RUN mkdir -p /home/node/app
 WORKDIR /home/node/app
- 
+
+# Switch to the 'node' user
+USER node
+
+# Copy package.json and install dependencies
 COPY --chown=node:node ./package.json ./
-RUN npm install 
+RUN npm install
+
+# Copy remaining application files
 COPY --chown=node:node ./ ./
- 
+
 CMD ["npm", "run", "start"]
