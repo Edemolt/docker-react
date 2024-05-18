@@ -4,8 +4,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-          JAI SIYA RAM
+          HELLO
       </header>
+      <h1>JAI SIYA RAM</h1>
     </div>
   );
 }
